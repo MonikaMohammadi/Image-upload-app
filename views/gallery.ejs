@@ -1,0 +1,25 @@
+<%- include('partials/header', {title: 'Gallery'}) %>
+
+<div class="container">
+    <h1>Image Gallery</h1>
+  
+    <% if (images.length === 0) { %>
+      <p>No images uploaded yet.</p>
+    <% } else { %>
+      <div class="gallery-grid">
+        <% images.forEach(image => { %>
+          <div class="image-card">
+            <img src="/uploads/<%= image.filename %>" alt="Uploaded image" />
+            <p>Uploaded at: <%= new Date(image.uploadedAt).toLocaleString() %></p>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  
+    <div class="actions">
+      <a href="/" class="btn">Go Home</a>
+      <a href="/upload" class="btn secondary">Upload More</a>
+    </div>
+  </div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,22 @@
+<%- include('partials/header', {title: 'Home'}) %>
+
+<div class="container">
+    <h1>Latest Upload Image</h1>
+
+    <% if (images.length > 0) { %>
+        <% const latest = images[images.length -1]; %>
+        <div class="image-card">
+            <img src="/uploads/<%= latest.filename %>" alt="Uploaded image" />
+            <p>Uploaded at: <%= new Date(latest.uploadedAt).toLocaleString() %></p>
+          </div>
+        <% } else { %>
+          <p>No images uploaded yet.</p>
+        <% } %>
+      
+        <div class="actions">
+          <a href="/upload" class="btn">Upload Another Image</a>
+          <a href="/gallery" class="btn secondary">View Gallery</a>
+        </div>
+</div>
+
+<%- include('partials/footer') %>
